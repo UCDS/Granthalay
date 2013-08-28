@@ -106,6 +106,7 @@
 	  if (strlen(trim($columns[6]))==0) {
 			$columns[6] = ' ';
 	  }
+	  $columns[7]=str_replace("'","\'",$columns[7]);
 	   /* Column 7 is for publication*/
 	  $import = new ImportQuery();
 	  $bibid = $import->alreadyInDB($columns[1],$columns[2],$columns[7]);
@@ -116,13 +117,13 @@
 			$b[$rowcount]="Record " . $rowcount . " Unknown error.";
 			continue;
 		  }
-		  $result=$import->insertBiblioCopy($columns,$lastinsertid);
+		  $result=$import->insertBiblioCopy($columns,$lastinsertid,$_POST['date']);
 		  if($result!=null)
 		  {
 		  	$b[$rowcount]=$result;
 		  }
 	  } else{
-	  	  $result=$import->insertBiblioCopy($columns,$bibid);
+	  	  $result=$import->insertBiblioCopy($columns,$bibid,$_POST['date']);
 	  	  if($result!=null)
 	  	  {
 	  	  	$b[$rowcount]=$result;

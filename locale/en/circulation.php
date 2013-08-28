@@ -102,6 +102,7 @@ $trans["mbrsearchNoResults"]      = "\$text='No results found.';";
 $trans["mbrsearchFoundResults"]   = "\$text=' results found.';";
 $trans["mbrsearchSearchResults"]  = "\$text='Search Results:';";
 $trans["mbrsearchCardNumber"]     = "\$text='Card Number:';";
+$trans["mbrsearchStandard"]     = "\$text='Standard:';";
 $trans["mbrsearchClassification"] = "\$text='Classification:';";
 
 

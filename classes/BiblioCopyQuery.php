@@ -228,9 +228,9 @@ class BiblioCopyQuery extends Query {
       return false;
     }
     $sql = $this->mkSQL("insert into biblio_copy values (%N"
-                        . ",null, now(), %Q, %Q, %Q, sysdate(), ",
-                        $copy->getBibid(), $copy->getCopyDesc(),
-                        $copy->getBarcodeNmbr(), $copy->getStatusCd());
+                        . ",null, %Q, %Q, %Q, %Q, %Q, ",
+                        $copy->getBibid(),$copy->getCreateDt(), $copy->getCopyDesc(),
+                        $copy->getBarcodeNmbr(), $copy->getStatusCd(),$copy->getStatusBeginDt());
     if ($copy->getDueBackDt() == "") {
       $sql .= "null, ";
     } else {

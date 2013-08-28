@@ -84,6 +84,8 @@
   $mbrQ->setItemsPerPage(OBIB_ITEMS_PER_PAGE);
   $mbrQ->connect();
   $mbrQ->execSearch($sType,$searchText,$currentPageNmbr);
+  $sclQ= new SchoolQuery();
+  $sclQ->connect();
 
   #**************************************************************************
   #*  Show member view screen if only one result from barcode query
@@ -162,6 +164,10 @@ function changePage(page)
           echo str_replace("\n", "<br />", H($mbr->getAddress())).'<br />';
       ?>
       <b><?php echo $loc->getText("mbrsearchCardNumber");?></b> <?php echo H($mbr->getBarcodeNmbr());?>
+
+      <b><?php echo $loc->getText("School Name:");?></b> <?php echo H($sclQ->getSchoolName($mbr->getSchoolId()) );?>
+
+      <b><?php echo $loc->getText("mbrsearchStandard");?></b> <?php echo H($mbr->getStandard()."-".$mbr->getGrade() );?>
       <b><?php echo $loc->getText("mbrsearchClassification");?></b> <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
     </td>
   </tr>
@@ -170,6 +176,7 @@ function changePage(page)
   <?php
     }
     $mbrQ->close();
+	$sclQ->close();
   ?>
   </table><br>
 <?php printResultPages($currentPageNmbr, $mbrQ->getPageCount()); ?><br>

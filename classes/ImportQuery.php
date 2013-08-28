@@ -77,13 +77,13 @@ function alreadyInDB($title, $author, $publication) {
  * @param $lastInsertID the last inserted id from the biblio table
  * @return nothing
  */
-function insertBiblioCopy($data, $lastInsertID) {
+function insertBiblioCopy($data, $lastInsertID,$date) {
 	$copy=new BiblioCopy();
 	$copy->setBibid($lastInsertID);
-	$copy->setCreateDt(date("Y-m-d H:i:s"));
+	$copy->setCreateDt($date);
 	$copy->setBarcodeNmbr($data[0]);
 	$copy->setStatusCd($data[3]);
-	$copy->setStatusBeginDt(date("Y-m-d H:i:s"));
+	$copy->setStatusBeginDt($date);
 	$copy->setBasketNumber($data[5]);
 	$copy->setCopyDesc($data[6]);
 	
